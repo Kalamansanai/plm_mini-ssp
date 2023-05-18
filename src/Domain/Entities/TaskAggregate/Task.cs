@@ -9,13 +9,14 @@ using Domain.Entities.CompanyHierarchy;
 using Domain.Interfaces;
 using Domain.Specifications;
 using FluentResults;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Domain.Entities.TaskAggregate;
 
 public class Task : IBaseEntity
 {
-    public int Id { get; private set; }
-    public string Name { get; private set; } = default!;
+    public int Id { get; set; }
+    public string Name { get; set; } = default!;
     public TaskType Type { get; set; }
 
     public int MaxOrderNum { get; private set; }
@@ -24,10 +25,10 @@ public class Task : IBaseEntity
     public Job Job { get; private set; } = default!;
     public int LocationId { get; private set; }
 
-    public Location Location { get; private set; } = default!;
+    public Location Location { get; set; } = default!;
     public List<TaskInstance> Instances { get; private set; } = default!;
     public List<Object> Objects { get; private set; } = default!;
-    public List<Step> Steps { get; private set; } = default!;
+    public List<Step> Steps { get; set; } = default!;
 
     public TaskInstance? OngoingInstance { get; set; }
     public int? OngoingInstanceId { get; set; }
@@ -73,6 +74,10 @@ public class Task : IBaseEntity
         var instance = new TaskInstance(this);
 
         OngoingInstance = instance;
+        if (Instances.IsNullOrEmpty())
+        {
+            Instances = new List<TaskInstance>();
+        }
         Instances.Add(instance);
 
         return Result.Ok();
@@ -80,11 +85,19 @@ public class Task : IBaseEntity
 
     public void AddObjects(IEnumerable<Object> objects)
     {
+        if (Objects.IsNullOrEmpty())
+        {
+            Objects = new List<Object>();
+        }
         Objects.AddRange(objects);
     }
 
     public void AddSteps(IEnumerable<Step> steps)
     {
+        if (Steps.IsNullOrEmpty())
+        {
+            Steps = new List<Step>();
+        }
         Steps.AddRange(steps);
         UpdateMaxOrderNum();
     }

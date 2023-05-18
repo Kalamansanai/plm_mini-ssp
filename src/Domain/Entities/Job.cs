@@ -8,7 +8,7 @@ public class Job : IBaseEntity
 {
     public int Id { get; private set; }
     public string Name { get; private set; } = default!;
-    public List<Task> Tasks { get; private set; } = default!;
+    public List<Task> Tasks { get; set; } = default!;
 
     private Job()
     {
@@ -17,6 +17,10 @@ public class Job : IBaseEntity
     private Job(int id, string name)
     {
         Id = id;
+        Name = name;
+    }
+    public Job(string name)
+    {
         Name = name;
     }
 

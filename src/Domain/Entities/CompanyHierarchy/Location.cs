@@ -12,7 +12,7 @@ public class Location : ICHNodeWithParent<Station>
     public string Name { get; private set; } = default!;
     public Station Parent { get; private set; } = default!;
     public int ParentId { get; private set; }
-    public Detector? Detector { get; private set; }
+    public Detector? Detector { get; set; }
     public List<Task> Tasks { get; private set; } = default!;
 
     public Task? OngoingTask { get; set; }
@@ -23,13 +23,13 @@ public class Location : ICHNodeWithParent<Station>
 
     private Location() {}
 
-    private Location(int id, string name, int parentId, byte[]? snapshot, int? ongoingTaskId)
+    private Location(int id, string name, byte[]? snapshot, int? ongoingTaskId, int parentID)
     {
         Id = id;
         Name = name;
-        ParentId = parentId;
         Snapshot = snapshot;
         OngoingTaskId = ongoingTaskId;
+        ParentId = parentID;
     }
 
     public Location(string name)

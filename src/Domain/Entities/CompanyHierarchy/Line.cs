@@ -1,5 +1,6 @@
 using Domain.Interfaces;
 using FluentResults;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Domain.Entities.CompanyHierarchy;
 
@@ -10,16 +11,15 @@ public class Line : ICHNode<OPU, Station>
     public List<Station> Children { get; private set; } = default!;
 
     public OPU Parent { get; private set; } = default!;
-    public int ParentId { get; private set; }
+    public int ParentId { get; private set; } = 1;
 
     private Line() {}
-    private Line(int id, string name, int parentId)
+    public Line(int id, string name, int parentID)
     {
         Id = id;
         Name = name;
-        ParentId = parentId;
+        ParentId = parentID;
     }
-
     public Line(string name)
     {
         Name = name;
@@ -34,20 +34,12 @@ public class Line : ICHNode<OPU, Station>
         }
 
         var station = new Station(stationName);
+        if (Children.IsNullOrEmpty())
+        {
+            Children = new List<Station>();
+        }
         Children.Add(station);
 
         return Result.Ok(station);
-    }
-
-    public Result Rename(string newName, ICHNameUniquenessChecker<OPU, Line> nameUniquenessChecker)
-    {
-        if (nameUniquenessChecker.IsDuplicate(Parent, newName, this).GetAwaiter().GetResult())
-        {
-            return Result.Fail("Duplicate name");
-        }
-
-        Name = newName;
-
-        return Result.Ok();
     }
 }

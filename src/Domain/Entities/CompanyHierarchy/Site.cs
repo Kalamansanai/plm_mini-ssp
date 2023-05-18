@@ -1,5 +1,6 @@
 using Domain.Interfaces;
 using FluentResults;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Domain.Entities.CompanyHierarchy;
 
@@ -11,17 +12,15 @@ public class Site : ICHNodeWithChildren<OPU>
 
     private Site() {}
 
-    private Site(int id, string name)
+    public Site(int id, string name)
     {
         Id = id;
         Name = name;
     }
-
-    private Site(string name)
+    public Site(string name)
     {
         Name = name;
     }
-
     public static Result<Site> New(string name,
         ICHNameUniquenessChecker<Site> nameUniquenessChecker)
     {
@@ -42,20 +41,12 @@ public class Site : ICHNodeWithChildren<OPU>
         }
 
         var opu = new OPU(opuName);
+        if (Children.IsNullOrEmpty())
+        {
+            Children = new List<OPU>();
+        }
         Children.Add(opu);
 
         return opu;
-    }
-
-    public Result Rename(string newName, ICHNameUniquenessChecker<Site> nameUniquenessChecker)
-    {
-        if (nameUniquenessChecker.IsDuplicate(newName, this).GetAwaiter().GetResult())
-        {
-            return Result.Fail("Duplicate name");
-        }
-
-        Name = newName;
-
-        return Result.Ok();
     }
 }

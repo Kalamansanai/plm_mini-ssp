@@ -11,6 +11,10 @@ public class EventResult
     public string? FailureReason { get; set; }
 
     private EventResult() {}
+    public EventResult(bool success)
+    {
+        Success = success;
+    }
 
     public static Result<EventResult> Create(bool success, string? failureReason)
     {

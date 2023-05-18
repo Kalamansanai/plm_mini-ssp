@@ -6,7 +6,7 @@ namespace Domain.Entities.TaskAggregate;
 
 public class Step : IBaseEntity
 {
-    public int Id { get; private set; }
+    public int Id { get; set; }
     public int OrderNum { get; private set; }
     public TemplateState ExpectedInitialState { get; private set; }
     public TemplateState ExpectedSubsequentState { get; private set; }
@@ -52,5 +52,9 @@ public class Step : IBaseEntity
             ExpectedSubsequentState = exSubsState,
             Object = obj
         };
+    }
+    public Step(int id)
+    {
+        Id = id;
     }
 }

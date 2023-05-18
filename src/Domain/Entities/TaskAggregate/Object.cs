@@ -5,10 +5,10 @@ namespace Domain.Entities.TaskAggregate;
 
 public partial class Object : IBaseEntity
 {
-    public int Id { get; private set; }
-    public string Name { get; private set; } = default!;
-    public ObjectCoordinates Coordinates { get; private set; } = default!;
-    public int TaskId { get; private set; }
+    public int Id { get; set; }
+    public string Name { get; set; } = default!;
+    public ObjectCoordinates Coordinates { get; set; } = default!;
+    public int TaskId { get; set; }
 
     private Object()
     {
@@ -20,6 +20,10 @@ public partial class Object : IBaseEntity
         Name = name;
         Coordinates = coordinates;
         TaskId = taskId;
+    }
+    public Object(string name)
+    {
+        Name = name;
     }
 
     public static Result<Object> Create(string newName, ObjectCoordinates newCoordinates, Task parent)

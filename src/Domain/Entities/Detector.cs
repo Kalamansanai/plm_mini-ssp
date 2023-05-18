@@ -11,11 +11,11 @@ namespace Domain.Entities;
 
 public class Detector : IBaseEntity
 {
-    public int Id { get; private set; }
+    public int Id { get; set; }
     public string Name { get; private set; } = default!;
     public PhysicalAddress MacAddress { get; private set; } = default!;
     public IPAddress IpAddress { get; private set; } = default!;
-    public DetectorState State { get; private set; }
+    public DetectorState State { get; set; }
     public List<HeartBeatLog> HeartBeatLogs { get; private set; } = default!;
 
     public Location? Location { get; private set; }
@@ -44,6 +44,10 @@ public class Detector : IBaseEntity
         State = state;
         HeartBeatLogs = new List<HeartBeatLog>();
         LocationId = locationId;
+    }
+    public Detector(string name)
+    {
+        Name = name;
     }
 
     public static Result<Detector> Create(string newName, PhysicalAddress newMacAddress, IPAddress newAddress, Location? location)

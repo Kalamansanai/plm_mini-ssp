@@ -2,39 +2,6 @@ namespace Api;
 
 public static class Routes
 {
-    public static class Sites
-    {
-        public const string List= "sites";
-        public const string GetById = "sites/{id}";
-        public const string Create = "sites";
-        public const string Update = "sites/{id}";
-        public const string Delete = "sites/{id}";
-    }
-
-    public static class OPUs
-    {
-        public const string GetById = "opus/{id}";
-        public const string Create = "opus";
-        public const string Update = "opus/{id}";
-        public const string Delete = "opus/{id}";
-    }
-
-    public static class Lines
-    {
-        public const string GetById = "lines/{id}";
-        public const string Create = "lines";
-        public const string Update = "lines/{id}";
-        public const string Delete = "lines/{id}";
-    }
-
-    public static class Stations
-    {
-        public const string GetById = "stations/{id}";
-        public const string Create = "stations";
-        public const string Update = "stations/{id}";
-        public const string Delete = "stations/{id}";
-    }
-
     public static class Locations
     {
         public const string GetAllFree = "locations/free";

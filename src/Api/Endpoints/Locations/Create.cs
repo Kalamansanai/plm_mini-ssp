@@ -43,13 +43,7 @@ public class Create : Endpoint<Create.Req, Create.Res>
 
     public override async Task HandleAsync(Req req, CancellationToken ct)
     {
-        var station = await StationRepo.FirstOrDefaultAsync(new CHNodeWithChildrenSpec<Station, Location>(req.ParentStationId), ct);
-
-        if (station is null)
-        {
-            await SendNotFoundAsync(ct);
-            return;
-        }
+        var station = await StationRepo.GetByIdAsync(1);
 
         var result = station.AddChildNode(req.Name, NameUniquenessChecker);
         var newLocation = result.Unwrap();

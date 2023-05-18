@@ -88,40 +88,30 @@ public class CodeSeedLoader
     {
         var sites = new List<Site>
         {
-            (Site)SiteConstructor.Invoke(new object?[] { 1, "Site 1" }),
-            (Site)SiteConstructor.Invoke(new object?[] { 2, "Site 2" })
+            (Site)SiteConstructor.Invoke(new object?[] { 1, "Site 1"})
         };
 
         var opus = new List<OPU>
         {
             (OPU)OpuConstructor.Invoke(new object?[] { 1, "OPU 1-1", 1 }),
-            (OPU)OpuConstructor.Invoke(new object?[] { 2, "OPU 1-2", 1 }),
-            (OPU)OpuConstructor.Invoke(new object?[] { 3, "OPU 2-1", 2 }),
-            (OPU)OpuConstructor.Invoke(new object?[] { 4, "OPU 2-2", 2 })
         };
 
         var lines = new List<Line>
         {
             (Line)LineConstructor.Invoke(new object?[] { 1, "Line 1-1", 1 }),
-            (Line)LineConstructor.Invoke(new object?[] { 2, "Line 1-2", 1 }),
-            (Line)LineConstructor.Invoke(new object?[] { 3, "Line 2-1", 2 }),
-            (Line)LineConstructor.Invoke(new object?[] { 4, "Line 2-2", 2 })
         };
 
         var stations = new List<Station>
         {
-            (Station)StationConstructor.Invoke(new object?[] { 1, "Station 1-1", 1 }),
-            (Station)StationConstructor.Invoke(new object?[] { 2, "Station 1-2", 1 }),
-            (Station)StationConstructor.Invoke(new object?[] { 3, "Station 2-1", 2 }),
-            (Station)StationConstructor.Invoke(new object?[] { 4, "Station 2-2", 2 })
+            (Station)StationConstructor.Invoke(new object?[] { 1 ,  "Station 1-1", 1 }),
         };
 
         var locations = new List<Location>
         {
-            (Location)LocationConstructor.Invoke(new object?[] { 1, "Location 1", 1, _snapshot, null }),
-            (Location)LocationConstructor.Invoke(new object?[] { 2, "Location 2", 1, null, null }),
-            (Location)LocationConstructor.Invoke(new object?[] { 3, "Location 3", 2, _snapshot, null }),
-            (Location)LocationConstructor.Invoke(new object?[] { 4, "Location 4", 2, null, null })
+            (Location)LocationConstructor.Invoke(new object?[] { 1, "Location 1", _snapshot, null, 1 }),
+            (Location)LocationConstructor.Invoke(new object?[] { 2, "Location 2", _snapshot, null, 1 }),
+            (Location)LocationConstructor.Invoke(new object?[] { 3, "Location 3", _snapshot, null, 1 }),
+            (Location)LocationConstructor.Invoke(new object?[] { 4, "Location 4", null, null, 1 })
         };
 
         var objects = new List<Object>

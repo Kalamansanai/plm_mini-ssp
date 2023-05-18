@@ -6,14 +6,14 @@ namespace Domain.Entities.TaskAggregate;
 public class TaskInstance : IBaseEntity
 {
     public int Id { get; private set; }
-    public TaskInstanceState State { get; private set; }
+    public TaskInstanceState State { get; set; }
     public List<Event> Events { get; private set; } = default!;
 
     public int CurrentOrderNum { get; private set; } = 1;
 
     public Task Task { get; private set; } = default!;
     public int TaskId { get; private set; }
-    public int[] RemainingStepIds { get; private set; } = default!;
+    public int[] RemainingStepIds { get; set; } = default!;
 
     private TaskInstance()
     {
