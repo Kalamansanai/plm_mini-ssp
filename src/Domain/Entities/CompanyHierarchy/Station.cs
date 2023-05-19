@@ -14,7 +14,7 @@ public class Station : ICHNode<Line, Location>
     public int ParentId { get; private set; }
 
     private Station() {}
-    public Station(int id, string name, int parentID)
+    private Station(int id, string name, int parentID)
     {
         Id = id;
         Name = name;

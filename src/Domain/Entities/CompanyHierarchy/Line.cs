@@ -11,10 +11,10 @@ public class Line : ICHNode<OPU, Station>
     public List<Station> Children { get; private set; } = default!;
 
     public OPU Parent { get; private set; } = default!;
-    public int ParentId { get; private set; } = 1;
+    public int ParentId { get; private set; }
 
     private Line() {}
-    public Line(int id, string name, int parentID)
+    private Line(int id, string name, int parentID)
     {
         Id = id;
         Name = name;

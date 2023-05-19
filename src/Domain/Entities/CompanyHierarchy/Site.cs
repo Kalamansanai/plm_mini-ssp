@@ -12,7 +12,7 @@ public class Site : ICHNodeWithChildren<OPU>
 
     private Site() {}
 
-    public Site(int id, string name)
+    private Site(int id, string name)
     {
         Id = id;
         Name = name;

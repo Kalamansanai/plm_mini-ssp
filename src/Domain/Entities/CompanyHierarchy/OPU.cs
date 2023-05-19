@@ -13,7 +13,7 @@ public class OPU : ICHNodeWithParent<Site>, ICHNodeWithChildren<Line>
     public int ParentId { get; private set; }
 
     private OPU() {}
-    public OPU(int id, string name, int parentID)
+    private OPU(int id, string name, int parentID)
     {
         Id = id;
         Name = name;
