@@ -2,6 +2,10 @@ namespace Api;
 
 public static class Routes
 {
+    public static class Stations
+    {
+        public const string GetById = "stations/{id}";
+    }
     public static class Locations
     {
         public const string GetAllFree = "locations/free";
