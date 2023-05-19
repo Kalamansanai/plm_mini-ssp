@@ -22,7 +22,7 @@ public class CodeSeedLoader
 
     private static readonly ConstructorInfo SiteConstructor =
         typeof(Site).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance,
-            new[] { typeof(int), typeof(string) })!;
+            new[] { typeof(int), typeof(string)})!;
 
     private static readonly ConstructorInfo OpuConstructor =
         typeof(OPU).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance,
@@ -38,7 +38,7 @@ public class CodeSeedLoader
 
     private static readonly ConstructorInfo LocationConstructor =
         typeof(Location).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance,
-            new[] { typeof(int), typeof(string), typeof(int), typeof(byte[]), typeof(int?) })!;
+            new[] { typeof(int), typeof(string), typeof(byte[]), typeof(int?), typeof(int) })!;
 
     private static readonly ConstructorInfo ObjectConstructor =
         typeof(Object).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance,
