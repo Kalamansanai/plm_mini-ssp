@@ -61,12 +61,12 @@ public class Create: Endpoint<Create.Req, EmptyResponse>
         var eventResult = EventResult.Create(req.Success, req.FailureReason).Unwrap();
 
         var isEnded = task.AddEventToCurrentInstance(req.StepId, eventResult, location.Detector).Unwrap();
-        if (isEnded)
-        {
-            var res = await task.SaveEventLog(InstanceRepo);
-            res.Unwrap();
-            Console.WriteLine("SaveEventLog:" + res);
-        }
+        // if (isEnded)
+        // {
+        //     var res = await task.SaveEventLog(InstanceRepo);
+        //     res.Unwrap();
+        //     Console.WriteLine("SaveEventLog:" + res);
+        // }
         
         await TaskRepo.SaveChangesAsync(ct);
         
