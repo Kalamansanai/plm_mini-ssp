@@ -113,11 +113,14 @@ public class Detector : IBaseEntity
         var lastLog = HeartBeatLogs.LastOrDefault();
         if (lastLog != null)
         {
+            Console.WriteLine("----------lastlog-----------");
             Console.WriteLine(lastLog.TimeStamp);
             if (lastLog.TimeStamp.AddSeconds(10) < DateTime.Now)
             {
                 State = DetectorState.Off;
                 // Location.OngoingTask = null;
+            }else{
+                State = DetectorState.Standby;
             }
         }
         
